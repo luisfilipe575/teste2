@@ -9,7 +9,7 @@ export default class PrintfulCatalog {
   }
   /**
    * @returns
-   * Returns list of Products available in the Printful.
+   * Returns list of Products available in Printful.
    *
    * @example
    * const products = await printful.PrintfulCatalog.products();
