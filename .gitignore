@@ -6,3 +6,6 @@ build/
 
 # Lock
 yarn.lock
+
+# Local Testing
+tests.ts

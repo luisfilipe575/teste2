@@ -3,7 +3,6 @@ import PrintfulCatalog from './endpoints/PrintfulCatalog';
 
 export default class Printful {
   private endpoint = 'https://api.printful.com/';
-  private apiKey!: string;
   private requester!: Requester;
   /**
    * @remarks
@@ -22,7 +21,6 @@ export default class Printful {
    * const products = await printful.PrintfulCatalog.products();
    */
   constructor(apiKey: string) {
-    this.apiKey = apiKey;
     this.requester = new Requester(this.endpoint, apiKey);
     this.initialize();
   }

@@ -1,3 +1,7 @@
+/**
+ * @remarks
+ * The FileType type used by the Printful API.
+ */
 export default interface FileType {
   /**
    * @remarks

@@ -1,3 +1,7 @@
+/**
+ * @remarks
+ * The OptionType type used by the Printful API.
+ */
 export default interface OptionType {
   /**
    * @remarks

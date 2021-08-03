@@ -16,6 +16,10 @@ interface ErrorObject {
   message: string;
 }
 
+/**
+ * @remarks
+ * The format in which an error is returned.
+ */
 export interface ErrorResponse extends RequesterResponse {
   /**
    * @remarks
