@@ -18,6 +18,9 @@ export default class PrintfulCatalog {
    * @example
    * const { result } = await printful.PrintfulCatalog.products();
    * console.log(result[0]); // Log the first product!
+   *
+   * @see
+   * https://www.printful.com/docs/catalog#actionIndex
    */
   async products(): Promise<ProductsResponse | ErrorResponse> {
     return await products(this.requester);
@@ -31,6 +34,9 @@ export default class PrintfulCatalog {
    * @example
    * const { result } = await printful.PrintfulCatalog.productsVariant(123456);
    * console.log(result); // Log the variant!
+   *
+   * @see
+   * https://www.printful.com/docs/catalog#actionVariant
    */
   async productsVariant(
     variantId: number
@@ -45,7 +51,10 @@ export default class PrintfulCatalog {
    *
    * @example
    * const { result } = await printful.PrintfulCatalog.productsVariantList(123456);
-   * console.log(result.product, result.variants); // Log the product and its variants.
+   * console.log(result.product, result.variants); // Log the product and its variants.\
+   *
+   * @see
+   * https://www.printful.com/docs/catalog#actionGet
    */
   async productsVariantList(
     productId: number

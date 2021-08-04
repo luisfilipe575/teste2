@@ -7,6 +7,9 @@ export default class Printful {
   /**
    * @remarks
    * Access endpoints from the Printful Catalog API.
+   *
+   * @see
+   * https://www.printful.com/docs/catalog
    */
   PrintfulCatalog!: PrintfulCatalog;
   /**
