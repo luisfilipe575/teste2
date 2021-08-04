@@ -10,10 +10,10 @@ export interface ListProductsResponse extends RequesterResponse {
 
 const listProducts = async (
   requester: Requester,
-  status: string,
-  search: string,
-  offset: number,
-  limit: number
+  status?: string,
+  search?: string,
+  offset?: number,
+  limit?: number
 ): Promise<ListProductsResponse | ErrorResponse> => {
   return await requester.request<ListProductsResponse>(
     `store/products`,

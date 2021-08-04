@@ -33,6 +33,26 @@ export interface RequesterResponse {
   result: any;
 }
 
+/**
+ * @remarks
+ * No remarks really needed, but this essentially removes undefined [key, value] pairs from objects.
+ * This is important for routes with optional body options.
+ *
+ * @see
+ * https://stackoverflow.com/questions/286141/remove-blank-attributes-from-an-object-in-javascript/38340730
+ */
+const cleanObject = (obj: any): any => {
+  Object.keys(obj).forEach((key) => {
+    if (obj[key] === undefined) {
+      delete obj[key];
+    }
+    if (typeof obj[key] === 'object') {
+      return cleanObject(obj[key]);
+    }
+  });
+  return obj;
+};
+
 export default class Requester {
   private defaultEndpoint!: string;
   private authorization!: string;
@@ -50,6 +70,12 @@ export default class Requester {
     this.authorization = authorization;
   }
   async request<T>(endpoint: string, method: RequesterMethod, data?: any) {
+    if (data && typeof data === 'object') {
+      cleanObject(data);
+      if (Object.keys(data).length == 0) {
+        data = undefined;
+      }
+    }
     const req = await fetch(`${this.defaultEndpoint}${endpoint}`, {
       method,
       headers: {
