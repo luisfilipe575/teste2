@@ -1,6 +1,5 @@
 import Requester, { RequesterMethod, RequesterResponse } from '../../requester';
 import { ErrorResponse } from '../../types/ErrorResponse';
-import Paging from '../../types/Paging';
 import RequestVariant from '../../types/RequestVariant';
 import SyncProduct from '../../types/SyncProduct';
 
