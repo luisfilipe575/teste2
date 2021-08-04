@@ -8,7 +8,7 @@ export interface ListProductsResponse extends RequesterResponse {
   paging: Paging;
 }
 
-const listSyncProducts = async (
+const listProducts = async (
   requester: Requester,
   status: string,
   search: string,
@@ -27,4 +27,4 @@ const listSyncProducts = async (
   );
 };
 
-export default listSyncProducts;
+export default listProducts;
