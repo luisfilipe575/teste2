@@ -3,7 +3,7 @@ import { ErrorResponse } from '../../types/ErrorResponse';
 import Paging from '../../types/Paging';
 import SyncProduct from '../../types/SyncProduct';
 
-export interface ListSyncProductsResponse extends RequesterResponse {
+export interface ListProductsResponse extends RequesterResponse {
   result: SyncProduct[];
   paging: Paging;
 }
@@ -14,8 +14,8 @@ const listSyncProducts = async (
   search: string,
   offset: number,
   limit: number
-): Promise<ListSyncProductsResponse | ErrorResponse> => {
-  return await requester.request<ListSyncProductsResponse>(
+): Promise<ListProductsResponse | ErrorResponse> => {
+  return await requester.request<ListProductsResponse>(
     `store/products`,
     RequesterMethod.GET,
     {
