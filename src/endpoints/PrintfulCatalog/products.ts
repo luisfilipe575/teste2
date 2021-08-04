@@ -9,7 +9,7 @@ export interface ProductsResponse extends RequesterResponse {
 export const products = async (
   requester: Requester
 ): Promise<ProductsResponse | ErrorResponse> => {
-  return await requester.request('products', RequesterMethod.GET, null);
+  return await requester.request('products', RequesterMethod.GET);
 };
 
 export default products;

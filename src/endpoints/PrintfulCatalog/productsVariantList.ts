@@ -10,11 +10,7 @@ export const productsVariantList = async (
   requester: Requester,
   productId: number
 ): Promise<ProductsVariantListResponse | ErrorResponse> => {
-  return await requester.request(
-    `products/${productId}`,
-    RequesterMethod.GET,
-    null
-  );
+  return await requester.request(`products/${productId}`, RequesterMethod.GET);
 };
 
 export default productsVariantList;

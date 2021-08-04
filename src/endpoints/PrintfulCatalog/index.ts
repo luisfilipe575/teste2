@@ -2,7 +2,7 @@ import productsVariantList, {
   ProductsVariantListResponse
 } from './productsVariantList';
 import productsVariant, { ProductsVariantResponse } from './productsVariant';
-import Requester, { RequesterMethod } from '../../requester';
+import Requester from '../../requester';
 import { ErrorResponse } from '../../types/ErrorResponse';
 import products, { ProductsResponse } from './products';
 

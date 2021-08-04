@@ -1,5 +1,6 @@
 import Requester from './requester';
 import PrintfulCatalog from './endpoints/PrintfulCatalog';
+import Products from './endpoints/Products';
 
 export default class Printful {
   private endpoint = 'https://api.printful.com/';
@@ -12,6 +13,14 @@ export default class Printful {
    * https://www.printful.com/docs/catalog
    */
   PrintfulCatalog!: PrintfulCatalog;
+  /**
+   * @remarks
+   * Access endpoints from the Products API.
+   *
+   * @see
+   * https://www.printful.com/docs/products
+   */
+  Products!: Products;
   /**
    *
    * @remarks

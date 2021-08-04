@@ -12,8 +12,7 @@ export const productsVariant = async (
 ): Promise<ProductsVariantResponse | ErrorResponse> => {
   return await requester.request(
     `products/variant/${variantId}`,
-    RequesterMethod.GET,
-    null
+    RequesterMethod.GET
   );
 };
 

@@ -49,7 +49,7 @@ export default class Requester {
     this.defaultEndpoint = defaultEndpoint;
     this.authorization = authorization;
   }
-  async request(endpoint: string, method: RequesterMethod, data?: any) {
+  async request<T>(endpoint: string, method: RequesterMethod, data?: any) {
     const req = await fetch(`${this.defaultEndpoint}${endpoint}`, {
       method,
       headers: {
@@ -61,6 +61,6 @@ export default class Requester {
       ...(data ? { body: JSON.stringify(data) } : {})
     });
     const jsonResponse = await req.json();
-    return jsonResponse as RequesterResponse;
+    return jsonResponse as T;
   }
 }
