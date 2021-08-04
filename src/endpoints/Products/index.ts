@@ -1,5 +1,8 @@
 import Requester from '../../requester';
 import { ErrorResponse } from '../../types/ErrorResponse';
+import RequestVariant from '../../types/RequestVariant';
+import SyncProduct from '../../types/SyncProduct';
+import createProduct, { CreateProductResponse } from './createProduct';
 import listProducts, { ListProductsResponse } from './listProducts';
 
 export default class Products {
@@ -30,5 +33,26 @@ export default class Products {
     limit?: number
   ): Promise<ListProductsResponse | ErrorResponse> {
     return await listProducts(this.requester, status, search, offset, limit);
+  }
+  /**
+   * @remarks
+   * Creates a new Sync Product together with its Sync Variants.
+   * Up to 10 requests per 60 seconds.
+   * Important: Jewlery products not available with this function.
+   *
+   * @param sync_product - Information about the Sync Product
+   * @param sync_variants - Information about the Sync Variants
+   *
+   * @example
+   * No example available. To contribute, please visit https://github.com/ryanhaticus/printful-js - thanks!
+   *
+   * @see
+   * https://www.printful.com/docs/products#actionCreateProduct
+   */
+  async createProduct(
+    sync_product: SyncProduct,
+    sync_variants: RequestVariant[]
+  ): Promise<CreateProductResponse | ErrorResponse> {
+    return await createProduct(this.requester, sync_product, sync_variants);
   }
 }
