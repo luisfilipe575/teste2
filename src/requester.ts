@@ -72,9 +72,6 @@ export default class Requester {
   async request<T>(endpoint: string, method: RequesterMethod, data?: any) {
     if (data && typeof data === 'object') {
       cleanObject(data);
-      if (Object.keys(data).length == 0) {
-        data = undefined;
-      }
     }
     const req = await fetch(`${this.defaultEndpoint}${endpoint}`, {
       method,
