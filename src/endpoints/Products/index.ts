@@ -17,17 +17,17 @@ export default class Products {
    * @param limit - Number of items per page (max 100)
    *
    * @example
-   * const { result } = await printful.Products.listProducts('synced', 'backpack', 0, 100);
+   * const { result } = await printful.Products.listProducts('synced');
    * console.log(result[0]); // Log the first synced 'backpack' product!
    *
    * @see
    * https://www.printful.com/docs/products#listProducts
    */
   async listProducts(
-    status: string,
-    search: string,
-    offset: number,
-    limit: number
+    status?: string,
+    search?: string,
+    offset?: number,
+    limit?: number
   ): Promise<ListProductsResponse | ErrorResponse> {
     return await listProducts(this.requester, status, search, offset, limit);
   }
