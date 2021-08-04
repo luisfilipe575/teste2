@@ -4,13 +4,15 @@ import RequestVariant from '../../types/RequestVariant';
 import SyncProduct from '../../types/SyncProduct';
 
 export interface CreateProductResponse extends RequesterResponse {
-  id: number;
-  external_id: string;
-  name: string;
-  variants: number;
-  synced: number;
-  thumbnail_url: string;
-  is_ignored: boolean;
+  result: {
+    id: number;
+    external_id: string;
+    name: string;
+    variants: number;
+    synced: number;
+    thumbnail_url: string;
+    is_ignored: boolean;
+  };
 }
 
 const createProduct = async (
