@@ -3,9 +3,14 @@ import RequestFile from './RequestFile';
 
 /**
  * @remarks
- * The RequestVariant type used by the Printful API.
+ * The PutRequestVariant type used by the Printful API.
  */
-export default interface RequestVariant {
+export default interface PutRequestVariant {
+  /**
+   * @remarks
+   * Sync Variant ID. Please specify the IDs of all Sync Variants you wish to keep.
+   */
+  id?: number;
   /**
    * @remarks
    * Variant ID from the Ecommerce platform
@@ -15,7 +20,7 @@ export default interface RequestVariant {
    * @remarks
    * Printful Variant ID that this Sync Variant is synced to
    */
-  variant_id: string;
+  variant_id?: number;
   /**
    * @remarks
    * Retail price that this item is sold for
@@ -35,7 +40,7 @@ export default interface RequestVariant {
    * @remarks
    * Array of attached print files
    */
-  files: RequestFile[];
+  files?: RequestFile[];
   /**
    * @remarks
    * Array of additional options for the configured product/variant

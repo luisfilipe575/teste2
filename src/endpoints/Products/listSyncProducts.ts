@@ -11,6 +11,7 @@ export interface ListSyncProductsResponse extends RequesterResponse {
 /**
  * @remarks
  * Because this function has multiple optional input parameters, we have organized them into an object for you.
+ * The Printful API does not officially recognize this type.
  *
  * @param status - Filter by item status (`synced/unsynced/all`). If only some of the variants are synced,the product is returned by both unsynced and synced filters
  * @param search - Product search needle
@@ -27,15 +28,12 @@ export interface ListSyncProductsParams {
 const listSyncProducts = async (
   requester: Requester,
   params: ListSyncProductsParams
-): Promise<ListProductsResponse | ErrorResponse> => {
-  return await requester.request<ListProductsResponse>(
+): Promise<ListSyncProductsResponse | ErrorResponse> => {
+  return await requester.request<ListSyncProductsResponse>(
     `store/products`,
     RequesterMethod.GET,
     {
-      status: params.status,
-      search: params.search,
-      offset: params.offset,
-      limit: params.limit
+      ...params
     }
   );
 };

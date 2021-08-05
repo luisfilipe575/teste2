@@ -1,10 +1,14 @@
 import Requester from '../../requester';
 import { ErrorResponse } from '../../types/ErrorResponse';
+import PutRequestProductBody from '../../types/PutRequestProductBody';
 import RequestVariant from '../../types/RequestVariant';
 import SyncProduct from '../../types/SyncProduct';
 import createSyncProduct, {
   CreateSyncProductResponse
 } from './createSyncProduct';
+import deleteSyncProduct, {
+  DeleteSyncProductResponse
+} from './deleteSyncProduct';
 import getSingleSyncProductAndSyncVariants, {
   GetSingleSyncProductAndSyncVariantsResponse
 } from './getSingleSyncProductAndSyncVariants';
@@ -12,6 +16,9 @@ import listSyncProducts, {
   ListSyncProductsParams,
   ListSyncProductsResponse
 } from './listSyncProducts';
+import modifySyncProduct, {
+  ModifySyncProductResponse
+} from './modifySyncProduct';
 
 export default class Products {
   private requester!: Requester;
@@ -25,13 +32,13 @@ export default class Products {
    * @param params - The input parameters
    *
    * @example
-   * const { result } = await printful.Products.listProducts({ status: 'synced' });
+   * const { result } = await printful.Products.listSyncProducts({ status: 'synced' });
    * console.log(result[0]); // Log the first synced 'backpack' product!
    *
    * @see
    * https://www.printful.com/docs/products#listProducts
    */
-  async listProducts(
+  async listSyncProducts(
     params: ListSyncProductsParams
   ): Promise<ListSyncProductsResponse | ErrorResponse> {
     return await listSyncProducts(this.requester, {
@@ -72,5 +79,39 @@ export default class Products {
     id: number | string
   ): Promise<GetSingleSyncProductAndSyncVariantsResponse | ErrorResponse> {
     return await getSingleSyncProductAndSyncVariants(this.requester, id);
+  }
+  /**
+   * @remarks
+   * Get a list of sync products.
+   *
+   * @param id - Sync Product ID (integer) or External ID (if prefixed with @)
+   *
+   * @example
+   * const { result } = await printful.Products.deleteSyncProduct(123456);
+   * console.log(result.product); // Log the deleted product.
+   *
+   * @see
+   * https://www.printful.com/docs/products#actionDeleteProduct
+   */
+  async deleteSyncProduct(
+    id: number | string
+  ): Promise<DeleteSyncProductResponse | ErrorResponse> {
+    return await deleteSyncProduct(this.requester, id);
+  }
+  /**
+   * @remarks
+   * Get a list of sync products.
+   *
+   * @param id - Sync Product ID (integer) or External ID (if prefixed with @)
+   * @param params - PUT request body
+   *
+   * @see
+   * https://www.printful.com/docs/products#actionUpdateProduct
+   */
+  async modifySyncProduct(
+    id: number | string,
+    params?: PutRequestProductBody
+  ): Promise<ModifySyncProductResponse | ErrorResponse> {
+    return await modifySyncProduct(this.requester, id, params);
   }
 }

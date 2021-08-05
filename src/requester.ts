@@ -73,16 +73,27 @@ export default class Requester {
     if (data && typeof data === 'object') {
       cleanObject(data);
     }
-    const req = await fetch(`${this.defaultEndpoint}${endpoint}`, {
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Basic ${Buffer.from(this.authorization).toString(
-          'base64'
-        )}`
-      },
-      ...(data ? { body: JSON.stringify(data) } : {})
-    });
+    let queryParams = '';
+    if (data && method === RequesterMethod.GET) {
+      queryParams = `?${Object.keys(data)
+        .map((key) => key + '=' + data[key])
+        .join('&')}`;
+    }
+    const req = await fetch(
+      `${this.defaultEndpoint}${endpoint}${queryParams}`,
+      {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Basic ${Buffer.from(this.authorization).toString(
+            'base64'
+          )}`
+        },
+        ...(data && method !== RequesterMethod.GET
+          ? { body: JSON.stringify(data) }
+          : {})
+      }
+    );
     const jsonResponse = await req.json();
     return jsonResponse as T;
   }
