@@ -3,6 +3,7 @@ import { ErrorResponse } from '../../types/ErrorResponse';
 import RequestVariant from '../../types/RequestVariant';
 import SyncProduct from '../../types/SyncProduct';
 import createProduct, { CreateProductResponse } from './createProduct';
+import getSingleProduct, { GetSingleProductResponse } from './getSingleProduct';
 import listProducts, {
   ListProductsParams,
   ListProductsResponse
@@ -45,9 +46,6 @@ export default class Products {
    * @param sync_product - Information about the Sync Product
    * @param sync_variants - Information about the Sync Variants
    *
-   * @example
-   * No example available. To contribute, please visit https://github.com/ryanhaticus/printful-js - thanks!
-   *
    * @see
    * https://www.printful.com/docs/products#actionCreateProduct
    */
@@ -56,5 +54,19 @@ export default class Products {
     sync_variants: RequestVariant[]
   ): Promise<CreateProductResponse | ErrorResponse> {
     return await createProduct(this.requester, sync_product, sync_variants);
+  }
+  /**
+   * @remarks
+   * Returns information about an existing Sync Product together with a list of its Sync Variants.
+   *
+   * @param id - Sync Product ID (integer) or External ID (if prefixed with @)
+   *
+   * @see
+   * https://www.printful.com/docs/products#getSingleSyncProduct
+   */
+  async getSingleProduct(
+    id: number | string
+  ): Promise<GetSingleProductResponse | ErrorResponse> {
+    return await getSingleProduct(this.requester, id);
   }
 }
