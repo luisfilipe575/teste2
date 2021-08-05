@@ -10,10 +10,10 @@ export default interface VariantInfo {
    * @remarks
    * Information about the selected Variant
    */
-  variant: Variant;
+  variant?: Variant;
   /**
    * @remarks
    * Information about the Product that the Variant belongs to
    */
-  product: Product;
+  product?: Product;
 }

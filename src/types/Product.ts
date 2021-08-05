@@ -10,65 +10,65 @@ export default interface Product {
    * @remarks
    * Product ID
    */
-  id: number;
+  id?: number;
   /**
    * @remarks
    * Product type identifier
    */
-  type: string;
+  type?: string;
   /**
    * @remarks
    * Product type name
    */
-  type_name: string;
+  type_name?: string;
   /**
    * @remarks
    * Brand name
    */
-  brand: string;
+  brand?: string;
   /**
    * @remarks
    * Model name
    */
-  model: string;
+  model?: string;
   /**
    * @remarks
    * URL of a sample image for this product
    */
-  image: string;
+  image?: string;
   /**
    * @remarks
    * Number of available variants for this product
    */
-  variant_count: number;
+  variant_count?: number;
   /**
    * @remarks
    * Currency in which prices are returned
    */
-  currency: string;
+  currency?: string;
   /**
    * @remarks
    * Definitions of Print/Mockup file categories that can be attached to this product
    */
-  files: FileType[];
+  files?: FileType[];
   /**
    * @remarks
    * Definitions of additional options that are available for this product
    */
-  options: OptionType[];
+  options?: OptionType[];
   /**
    * @remarks
    * If product is disabled in push
    */
-  is_discontinued: boolean;
+  is_discontinued?: boolean;
   /**
    * @remarks
    * Average number of days for order to be fulfilled
    */
-  avg_fulfilment_time: number;
+  avg_fulfilment_time?: number;
   /**
    * @remarks
    * Product description
    */
-  description: string;
+  description?: string;
 }

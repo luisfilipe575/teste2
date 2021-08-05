@@ -7,55 +7,55 @@ export default interface Variant {
    * @remarks
    * Variant ID, use this to specify the product when creating orders
    */
-  id: number;
+  id?: number;
   /**
    * @remarks
    * ID of the product that this variant belongs to
    */
-  product_id: number;
+  product_id?: number;
   /**
    * @remarks
    * Display name
    */
-  name: string;
+  name?: string;
   /**
    * @remarks
    * Item size
    */
-  size: string;
+  size?: string;
   /**
    * @remarks
    * Item color
    */
-  color: string;
+  color?: string;
   /**
    * @remarks
    * Hexadecimal RGB color code. May not exactly reflect the real-world color
    */
-  color_code: string;
+  color_code?: string;
   /**
    * @remarks
    * Secondary hexadecimal RGB color code. May not exactly reflect the real-world color
    */
-  color_code2: string;
+  color_code2?: string;
   /**
    * @remarks
    * URL of a preview image for this variant
    */
-  image: string;
+  image?: string;
   /**
    * @remarks
    * Variant's price (can change depending on print files and optional settings)
    */
-  price: string;
+  price?: string;
   /**
    * @remarks
    * Stock availability of this variant
    */
-  in_stock: boolean;
+  in_stock?: boolean;
   /**
    * @remarks
    * Map of [region code, region name] of regions where the variant is available for fulfillment=
    */
-  availability_regions: Map<string, string>;
+  availability_regions?: Map<string, string>;
 }

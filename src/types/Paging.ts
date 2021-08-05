@@ -7,15 +7,15 @@ export default interface Paging {
    * @remarks
    * Total number of items available
    */
-  total: number;
+  total?: number;
   /**
    * @remarks
    * Current result set page offset
    */
-  offset: number;
+  offset?: number;
   /**
    * @remarks
    * Max number of items per page
    */
-  limit: number;
+  limit?: number;
 }

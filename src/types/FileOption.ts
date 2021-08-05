@@ -7,10 +7,10 @@ export default interface FileOption {
    * @remarks
    * Option ID
    */
-  id: string;
+  id?: string;
   /**
    * @remarks
    * Option value
    */
-  value: any;
+  value?: any;
 }

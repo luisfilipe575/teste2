@@ -7,7 +7,7 @@ export default interface AvailabilityStatus {
    * @remarks
    * Region code
    */
-  region: string;
+  region?: string;
   /**
    * @remarks
    * Stock status. Possible values include: 'in_stock' - available for fulfillment,
@@ -15,5 +15,5 @@ export default interface AvailabilityStatus {
    * 'discontinued' - permanently unavailable,
    * 'out_of_stock' - temporarily unavailable
    */
-  status: string;
+  status?: string;
 }

@@ -10,10 +10,10 @@ export default interface ProductInfo {
    * @remarks
    * Information about the selected product
    */
-  product: Product[];
+  product?: Product[];
   /**
    * @remarks
    * Array of Variants available for the selected product
    */
-  variants: Variant[];
+  variants?: Variant[];
 }

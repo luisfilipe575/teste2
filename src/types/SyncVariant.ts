@@ -7,18 +7,77 @@ import File from './File';
  * The SyncVariant type used by the Printful API.
  */
 export default interface SyncVariant {
-  id: number;
-  external_id: string;
-  sync_product_id: number;
-  name: string;
-  synced: boolean;
-  variant_id: number;
-  warehouse_product_variant_id: number;
-  retail_price: number;
-  sku: string;
-  currency: string;
-  is_ignored: boolean;
-  product: ProductVariant;
-  files: File[];
-  options: ItemOption[];
+  /**
+   * @remarks
+   * Sync Variant ID
+   */
+  id?: number;
+  /**
+   * @remarks
+   * Variant ID from the Ecommerce platform
+   */
+  external_id?: string;
+  /**
+   * @remarks
+   * Sync Product ID that this variant belongs to
+   */
+  sync_product_id?: number;
+  /**
+   * @remarks
+   * Sync Variant name
+   */
+  name?: string;
+  /**
+   * @remarks
+   * Indicates if this Sync Variant is properly linked with Printful product
+   */
+  synced?: boolean;
+  /**
+   * @remarks
+   * Printful Variant ID that this Sync Variant is synced to
+   */
+  variant_id?: number;
+  /**
+   * @remarks
+   * Warehousing variant id. If sync variant is connected with a warehousing item, this is its id
+   */
+  warehouse_product_variant_id?: number;
+  /**
+   * @remarks
+   * Retail price that this item is sold for
+   */
+  retail_price?: number;
+  /**
+   * @remarks
+   * SKU of this Sync Variant
+   */
+  sku?: string;
+  /**
+   * @remarks
+   * Currency in which prices are returned
+   */
+  currency?: string;
+  /**
+   * @remarks
+   * Indicates if this Sync Variant is ignored
+   */
+  is_ignored?: boolean;
+  /**
+   * @remarks
+   * Short information about the Printful Product and Variant that this Sync Variant is synced to
+   */
+  product?: ProductVariant;
+  /**
+   * @remarks
+   * Array of attached printfiles / preview images
+   */
+  files?: File[];
+  /**
+   * @remarks
+   * Array of additional options for the configured product/variant
+   */
+  options?: ItemOption[];
+  /**
+   * @remarks
+   */
 }
