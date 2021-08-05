@@ -3,7 +3,7 @@ import { ErrorResponse } from '../../types/ErrorResponse';
 import RequestVariant from '../../types/RequestVariant';
 import SyncProduct from '../../types/SyncProduct';
 
-export interface CreateProductResponse extends RequesterResponse {
+export interface CreateSyncProductResponse extends RequesterResponse {
   result: {
     id: number;
     external_id: string;
@@ -15,15 +15,15 @@ export interface CreateProductResponse extends RequesterResponse {
   };
 }
 
-const createProduct = async (
+const createSyncProduct = async (
   requester: Requester,
   sync_product: SyncProduct,
   sync_variants: RequestVariant[]
-): Promise<CreateProductResponse | ErrorResponse> => {
+): Promise<CreateSyncProductResponse | ErrorResponse> => {
   return await requester.request(`store/products`, RequesterMethod.POST, {
     sync_product,
     sync_variants
   });
 };
 
-export default createProduct;
+export default createSyncProduct;

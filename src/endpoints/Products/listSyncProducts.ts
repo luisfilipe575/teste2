@@ -3,7 +3,7 @@ import { ErrorResponse } from '../../types/ErrorResponse';
 import Paging from '../../types/Paging';
 import SyncProduct from '../../types/SyncProduct';
 
-export interface ListProductsResponse extends RequesterResponse {
+export interface ListSyncProductsResponse extends RequesterResponse {
   result: SyncProduct[];
   paging: Paging;
 }
@@ -17,16 +17,16 @@ export interface ListProductsResponse extends RequesterResponse {
  * @param offset - Result set offset
  * @param limit - Number of items per page (max 100)
  */
-export interface ListProductsParams {
+export interface ListSyncProductsParams {
   status?: string;
   search?: string;
   offset?: number;
   limit?: number;
 }
 
-const listProducts = async (
+const listSyncProducts = async (
   requester: Requester,
-  params: ListProductsParams
+  params: ListSyncProductsParams
 ): Promise<ListProductsResponse | ErrorResponse> => {
   return await requester.request<ListProductsResponse>(
     `store/products`,
@@ -40,4 +40,4 @@ const listProducts = async (
   );
 };
 
-export default listProducts;
+export default listSyncProducts;

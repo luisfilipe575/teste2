@@ -2,12 +2,16 @@ import Requester from '../../requester';
 import { ErrorResponse } from '../../types/ErrorResponse';
 import RequestVariant from '../../types/RequestVariant';
 import SyncProduct from '../../types/SyncProduct';
-import createProduct, { CreateProductResponse } from './createProduct';
-import getSingleProduct, { GetSingleProductResponse } from './getSingleProduct';
-import listProducts, {
-  ListProductsParams,
-  ListProductsResponse
-} from './listProducts';
+import createSyncProduct, {
+  CreateSyncProductResponse
+} from './createSyncProduct';
+import getSingleSyncProductAndSyncVariants, {
+  GetSingleSyncProductAndSyncVariantsResponse
+} from './getSingleSyncProductAndSyncVariants';
+import listSyncProducts, {
+  ListSyncProductsParams,
+  ListSyncProductsResponse
+} from './listSyncProducts';
 
 export default class Products {
   private requester!: Requester;
@@ -28,9 +32,9 @@ export default class Products {
    * https://www.printful.com/docs/products#listProducts
    */
   async listProducts(
-    params: ListProductsParams
-  ): Promise<ListProductsResponse | ErrorResponse> {
-    return await listProducts(this.requester, {
+    params: ListSyncProductsParams
+  ): Promise<ListSyncProductsResponse | ErrorResponse> {
+    return await listSyncProducts(this.requester, {
       status: params.status,
       search: params.search,
       limit: params.limit,
@@ -49,11 +53,11 @@ export default class Products {
    * @see
    * https://www.printful.com/docs/products#actionCreateProduct
    */
-  async createProduct(
+  async createSyncProduct(
     sync_product: SyncProduct,
     sync_variants: RequestVariant[]
-  ): Promise<CreateProductResponse | ErrorResponse> {
-    return await createProduct(this.requester, sync_product, sync_variants);
+  ): Promise<CreateSyncProductResponse | ErrorResponse> {
+    return await createSyncProduct(this.requester, sync_product, sync_variants);
   }
   /**
    * @remarks
@@ -64,9 +68,9 @@ export default class Products {
    * @see
    * https://www.printful.com/docs/products#getSingleSyncProduct
    */
-  async getSingleProduct(
+  async getSingleSyncProduct(
     id: number | string
-  ): Promise<GetSingleProductResponse | ErrorResponse> {
-    return await getSingleProduct(this.requester, id);
+  ): Promise<GetSingleSyncProductAndSyncVariantsResponse | ErrorResponse> {
+    return await getSingleSyncProductAndSyncVariants(this.requester, id);
   }
 }

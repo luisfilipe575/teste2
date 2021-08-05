@@ -2,15 +2,16 @@ import Requester, { RequesterMethod, RequesterResponse } from '../../requester';
 import { ErrorResponse } from '../../types/ErrorResponse';
 import SyncProductInfo from '../../types/SyncProductInfo';
 
-export interface GetSingleProductResponse extends RequesterResponse {
+export interface GetSingleSyncProductAndSyncVariantsResponse
+  extends RequesterResponse {
   result: SyncProductInfo;
 }
 
-const getSingleProduct = async (
+const getSingleSyncProductAndSyncVariants = async (
   requester: Requester,
   id: number | string
-): Promise<GetSingleProductResponse | ErrorResponse> => {
+): Promise<GetSingleSyncProductAndSyncVariantsResponse | ErrorResponse> => {
   return await requester.request(`store/products/${id}`, RequesterMethod.GET);
 };
 
-export default getSingleProduct;
+export default getSingleSyncProductAndSyncVariants;
