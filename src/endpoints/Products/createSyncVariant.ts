@@ -13,8 +13,8 @@ const createSyncVariant = async (
   requestVariant: RequestVariant
 ): Promise<CreateSyncVariantResponse | ErrorResponse> => {
   return await requester.request(
-    `store/products/${id}`,
-    RequesterMethod.PUT,
+    `store/products/${id}/variants`,
+    RequesterMethod.POST,
     requestVariant
   );
 };

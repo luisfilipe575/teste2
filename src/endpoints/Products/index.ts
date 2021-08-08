@@ -12,6 +12,9 @@ import createSyncVariant, {
 import deleteSyncProduct, {
   DeleteSyncProductResponse
 } from './deleteSyncProduct';
+import deleteSyncVariant, {
+  DeleteSyncVariantResponse
+} from './deleteSyncVariant';
 import getSingleSyncProductAndSyncVariants, {
   GetSingleSyncProductAndSyncVariantsResponse
 } from './getSingleSyncProductAndSyncVariants';
@@ -128,5 +131,19 @@ export default class Products {
     requestVariant: RequestVariant
   ): Promise<CreateSyncVariantResponse | ErrorResponse> {
     return await createSyncVariant(this.requester, id, requestVariant);
+  }
+  /**
+   * @remarks
+   * Deletes a single Sync Variant.
+   *
+   * @param id - Sync Variant ID (integer) or External ID (if prefixed with @)
+   *
+   * @see
+   * https://www.printful.com/docs/products
+   */
+  async deleteSyncVariant(
+    id: number | string
+  ): Promise<DeleteSyncVariantResponse | ErrorResponse> {
+    return await deleteSyncVariant(this.requester, id);
   }
 }
