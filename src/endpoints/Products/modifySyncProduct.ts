@@ -12,9 +12,11 @@ const modifySyncProduct = async (
   id: number | string,
   params?: PutRequestProductBody
 ): Promise<ModifySyncProductResponse | ErrorResponse> => {
-  return await requester.request(`store/products/${id}`, RequesterMethod.PUT, {
-    ...params
-  });
+  return await requester.request(
+    `store/products/${id}`,
+    RequesterMethod.PUT,
+    params
+  );
 };
 
 export default modifySyncProduct;

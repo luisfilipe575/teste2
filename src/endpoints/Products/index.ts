@@ -1,6 +1,10 @@
+import modifySyncVariant, {
+  ModifySyncVariantResponse
+} from './modifySyncVariant';
 import Requester from '../../requester';
 import { ErrorResponse } from '../../types/ErrorResponse';
 import PutRequestProductBody from '../../types/PutRequestProductBody';
+import PutRequestVariant from '../../types/PutRequestVariant';
 import RequestVariant from '../../types/RequestVariant';
 import SyncProduct from '../../types/SyncProduct';
 import createSyncProduct, {
@@ -160,5 +164,24 @@ export default class Products {
     id: number | string
   ): Promise<DeleteSyncVariantResponse | ErrorResponse> {
     return await deleteSyncVariant(this.requester, id);
+  }
+  /**
+   * @remarks
+   * Modifies an existing Sync Variant.
+   * Please note that in the request body you only need to specify the fields that need to be changed. See examples for more insights.
+   * Up to 10 requests per 60 seconds.
+   * Important: Jewlery products not available with this function.
+   *
+   * @param id - Sync Variant ID (integer) or External ID (if prefixed with @)
+   * @param params - PUT request body
+   *
+   * @see
+   * https://www.printful.com/docs/products#actionUpdateVariant
+   */
+  async modifySyncVariant(
+    id: number | string,
+    params?: PutRequestVariant
+  ): Promise<ModifySyncVariantResponse | ErrorResponse> {
+    return await modifySyncVariant(this.requester, id, params);
   }
 }
