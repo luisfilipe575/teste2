@@ -8,6 +8,12 @@ export interface ListSyncProductsResponse extends RequesterResponse {
   paging: Paging;
 }
 
+export enum SyncProductStatus {
+  SYNCED = 'synced',
+  UNSYNCED = 'unsynced',
+  ALL = 'ALL'
+}
+
 /**
  * @remarks
  * Because this function has multiple optional input parameters, we have organized them into an object for you.
@@ -19,7 +25,7 @@ export interface ListSyncProductsResponse extends RequesterResponse {
  * @param limit - Number of items per page (max 100)
  */
 export interface ListSyncProductsParams {
-  status?: string;
+  status?: SyncProductStatus;
   search?: string;
   offset?: number;
   limit?: number;
@@ -27,14 +33,12 @@ export interface ListSyncProductsParams {
 
 const listSyncProducts = async (
   requester: Requester,
-  params: ListSyncProductsParams
+  params?: ListSyncProductsParams
 ): Promise<ListSyncProductsResponse | ErrorResponse> => {
   return await requester.request<ListSyncProductsResponse>(
     `store/products`,
     RequesterMethod.GET,
-    {
-      ...params
-    }
+    params
   );
 };
 

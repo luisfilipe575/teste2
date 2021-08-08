@@ -6,6 +6,9 @@ import SyncProduct from '../../types/SyncProduct';
 import createSyncProduct, {
   CreateSyncProductResponse
 } from './createSyncProduct';
+import createSyncVariant, {
+  CreateSyncVariantResponse
+} from './createSyncVariant';
 import deleteSyncProduct, {
   DeleteSyncProductResponse
 } from './deleteSyncProduct';
@@ -39,14 +42,9 @@ export default class Products {
    * https://www.printful.com/docs/products#listProducts
    */
   async listSyncProducts(
-    params: ListSyncProductsParams
+    params?: ListSyncProductsParams
   ): Promise<ListSyncProductsResponse | ErrorResponse> {
-    return await listSyncProducts(this.requester, {
-      status: params.status,
-      search: params.search,
-      limit: params.limit,
-      offset: params.offset
-    });
+    return await listSyncProducts(this.requester, params);
   }
   /**
    * @remarks
@@ -113,5 +111,22 @@ export default class Products {
     params?: PutRequestProductBody
   ): Promise<ModifySyncProductResponse | ErrorResponse> {
     return await modifySyncProduct(this.requester, id, params);
+  }
+  /**
+   * @remarks
+   * Up to 10 requests per 60 seconds.
+   * Important: Jewlery products not available with this function.
+   *
+   * @param id - Sync Product ID (integer) or External ID (if prefixed with @)
+   * @param requestVariant - POST request body
+   *
+   * @see
+   * https://www.printful.com/docs/products#actionCreateVariant
+   */
+  async createSyncVariant(
+    id: number | string,
+    requestVariant: RequestVariant
+  ): Promise<CreateSyncVariantResponse | ErrorResponse> {
+    return await createSyncVariant(this.requester, id, requestVariant);
   }
 }
