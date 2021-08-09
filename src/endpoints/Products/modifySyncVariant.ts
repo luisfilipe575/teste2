@@ -12,11 +12,9 @@ const modifySyncVariant = async (
   id: number | string,
   params?: PutRequestVariant
 ): Promise<ModifySyncVariantResponse | ErrorResponse> => {
-  return await requester.request(
-    `store/variants/${id}`,
-    RequesterMethod.PUT,
-    params
-  );
+  return await requester.request(`store/variants/${id}`, RequesterMethod.PUT, {
+    body: params
+  });
 };
 
 export default modifySyncVariant;

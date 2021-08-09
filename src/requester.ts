@@ -53,6 +53,11 @@ const cleanObject = (obj: any): any => {
   return obj;
 };
 
+export interface RequestData {
+  body?: any;
+  params?: any;
+}
+
 export default class Requester {
   private defaultEndpoint!: string;
   private authorization!: string;
@@ -69,14 +74,18 @@ export default class Requester {
     this.defaultEndpoint = defaultEndpoint;
     this.authorization = authorization;
   }
-  async request<T>(endpoint: string, method: RequesterMethod, data?: any) {
-    if (data && typeof data === 'object') {
+  async request<T>(
+    endpoint: string,
+    method: RequesterMethod,
+    data?: RequestData
+  ) {
+    if (data) {
       cleanObject(data);
     }
     let queryParams = '';
-    if (data && method === RequesterMethod.GET) {
-      queryParams = `?${Object.keys(data)
-        .map((key) => key + '=' + data[key])
+    if (data && data.params) {
+      queryParams = `?${Object.keys(data.params)
+        .map((key) => key + '=' + data.params[key])
         .join('&')}`;
     }
     const req = await fetch(
@@ -89,9 +98,7 @@ export default class Requester {
             'base64'
           )}`
         },
-        ...(data && method !== RequesterMethod.GET
-          ? { body: JSON.stringify(data) }
-          : {})
+        ...(data && data.body ? { body: JSON.stringify(data.body) } : {})
       }
     );
     const jsonResponse = await req.json();

@@ -38,7 +38,9 @@ const listSyncProducts = async (
   return await requester.request<ListSyncProductsResponse>(
     `store/products`,
     RequesterMethod.GET,
-    params
+    {
+      params
+    }
   );
 };
 

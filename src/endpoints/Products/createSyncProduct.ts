@@ -21,8 +21,10 @@ const createSyncProduct = async (
   sync_variants: RequestVariant[]
 ): Promise<CreateSyncProductResponse | ErrorResponse> => {
   return await requester.request(`store/products`, RequesterMethod.POST, {
-    sync_product,
-    sync_variants
+    body: {
+      sync_product,
+      sync_variants
+    }
   });
 };
 

@@ -15,7 +15,7 @@ const createSyncVariant = async (
   return await requester.request(
     `store/products/${id}/variants`,
     RequesterMethod.POST,
-    requestVariant
+    { body: requestVariant }
   );
 };
 
