@@ -1,8 +1,8 @@
 /**
  * @remarks
- * The Recipient type used by the Printful API.
+ * The Address type used by the Printful API.
  */
-export default interface Recipient {
+export default interface Address {
   /**
    * @remarks
    * Full name

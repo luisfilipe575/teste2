@@ -1,18 +1,11 @@
 import Requester, { RequesterMethod, RequesterResponse } from '../../requester';
 import { ErrorResponse } from '../../types/ErrorResponse';
+import RequestProductResponse from '../../types/RequestProductResponse';
 import RequestVariant from '../../types/RequestVariant';
 import SyncProduct from '../../types/SyncProduct';
 
 export interface CreateSyncProductResponse extends RequesterResponse {
-  result: {
-    id: number;
-    external_id: string;
-    name: string;
-    variants: number;
-    synced: number;
-    thumbnail_url: string;
-    is_ignored: boolean;
-  };
+  result: RequestProductResponse;
 }
 
 const createSyncProduct = async (
