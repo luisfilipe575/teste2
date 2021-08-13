@@ -2,6 +2,7 @@ import Requester from './requester';
 import PrintfulCatalog from './endpoints/PrintfulCatalog';
 import Products from './endpoints/Products';
 import Orders from './endpoints/Orders';
+import FileLibrary from './endpoints/FileLibrary';
 
 export default class Printful {
   private endpoint = 'https://api.printful.com/';
@@ -31,6 +32,14 @@ export default class Printful {
    */
   Orders!: Orders;
   /**
+   * @remarks
+   * Access endpoints from the FileLibrary API.
+   *
+   * @see
+   * https://www.printful.com/docs/files
+   */
+  FileLibrary!: FileLibrary;
+  /**
    *
    * @remarks
    * Setup an instance of the Printful client.
@@ -49,5 +58,6 @@ export default class Printful {
     this.PrintfulCatalog = new PrintfulCatalog(this.requester);
     this.Products = new Products(this.requester);
     this.Orders = new Orders(this.requester);
+    this.FileLibrary = new FileLibrary(this.requester);
   }
 }
