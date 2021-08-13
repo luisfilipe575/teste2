@@ -9,10 +9,10 @@ export interface ModifySyncProductResponse extends RequesterResponse {
 const modifySyncProduct = async (
   requester: Requester,
   id: number | string,
-  params?: PutRequestProductBody
+  body?: PutRequestProductBody
 ): Promise<ModifySyncProductResponse | ErrorResponse> => {
   return await requester.request(`store/products/${id}`, RequesterMethod.PUT, {
-    body: params
+    body
   });
 };
 

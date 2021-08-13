@@ -40,7 +40,7 @@ export default class Products {
    * @remarks
    * Get a list of sync products.
    *
-   * @param params - The input parameters
+   * @param params - ListSyncProducts parameters.
    *
    * @example
    * const { result } = await printful.Products.listSyncProducts({ status: 'synced' });
@@ -109,16 +109,16 @@ export default class Products {
    * Get a list of sync products.
    *
    * @param id - Sync Product ID (integer) or External ID (if prefixed with @)
-   * @param params - PUT request body
+   * @param body - PUT request body
    *
    * @see
    * https://www.printful.com/docs/products#actionUpdateProduct
    */
   async modifySyncProduct(
     id: number | string,
-    params?: PutRequestProductBody
+    body?: PutRequestProductBody
   ): Promise<ModifySyncProductResponse | ErrorResponse> {
-    return await modifySyncProduct(this.requester, id, params);
+    return await modifySyncProduct(this.requester, id, body);
   }
   /**
    * @remarks
@@ -173,15 +173,15 @@ export default class Products {
    * Important: Jewlery products not available with this function.
    *
    * @param id - Sync Variant ID (integer) or External ID (if prefixed with @)
-   * @param params - PUT request body
+   * @param body - PUT request body
    *
    * @see
    * https://www.printful.com/docs/products#actionUpdateVariant
    */
   async modifySyncVariant(
     id: number | string,
-    params?: PutRequestVariant
+    body?: PutRequestVariant
   ): Promise<ModifySyncVariantResponse | ErrorResponse> {
-    return await modifySyncVariant(this.requester, id, params);
+    return await modifySyncVariant(this.requester, id, body);
   }
 }

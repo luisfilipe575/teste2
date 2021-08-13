@@ -10,10 +10,10 @@ export interface ModifySyncVariantResponse extends RequesterResponse {
 const modifySyncVariant = async (
   requester: Requester,
   id: number | string,
-  params?: PutRequestVariant
+  body?: PutRequestVariant
 ): Promise<ModifySyncVariantResponse | ErrorResponse> => {
   return await requester.request(`store/variants/${id}`, RequesterMethod.PUT, {
-    body: params
+    body
   });
 };
 

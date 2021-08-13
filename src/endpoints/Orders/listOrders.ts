@@ -36,9 +36,9 @@ export interface ListOrdersParams {
 
 const listOrders = async (
   requester: Requester,
-  params: ListOrdersParams
+  params?: ListOrdersParams
 ): Promise<ListOrdersResponse | ErrorResponse> => {
-  return await requester.request(`store/products`, RequesterMethod.POST, {
+  return await requester.request(`orders`, RequesterMethod.GET, {
     params
   });
 };
